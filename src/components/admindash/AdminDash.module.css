@@ -1,0 +1,8 @@
+@import "../../colors.css";
+/*@import "../../GeneralStyles.css";*/
+
+.wrapper {
+    background: white;
+}
+
+@import "../../GeneralStyles.css";

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {Role} from "../models/user/Role";
-import {Context} from "../index";
+import {Role} from "../../models/user/Role";
+import {Context} from "../../index";
 import {useLocation} from "react-router-dom";
 
 const PrivateRoute = ({children, roles}: {children: JSX.Element, roles: Role[]}) => {

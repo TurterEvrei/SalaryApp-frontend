@@ -1,0 +1,388 @@
+@import "../../colors.css";
+
+.container {
+    background: transparent;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 90px 1fr 50px;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+
+.container .pageHeader {
+    padding: 0 20px;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.container .pageHeader .pageName {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.container .pageHeader .pageDescription {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark-400);
+}
+
+.container .pageHeader::before {
+    content: '';
+    position: absolute;
+    top: 90px;
+    height: 1px;
+    width: calc(100% - 40px);
+    background: var(--dark-300);
+}
+
+.container .cardWrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.container .card {
+    grid-column: 4 / 10;
+    background: var(--dark-200);
+    z-index: auto;
+    display: grid;
+    grid-template: 60px auto repeat(2, auto) 60px / repeat(6, 1fr);
+    border-radius: 20px;
+    transition: 0.5s ease-in-out;
+}
+
+.container .card .rowNext,
+.container .card .rowPrev {
+    align-self: center;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    background: var(--main-prm);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: var(--main-dark);
+    transition: 0.5s;
+}
+
+.container .card .rowNext:hover,
+.container .card .rowPrev:hover {
+    background: var(--prm-400);
+    cursor: pointer;
+}
+
+.container .card .rowNext:focus,
+.container .card .rowPrev:focus {
+    background: var(--prm-500);
+}
+
+.container .card .rowNext[aria-disabled=true],
+.container .card .rowPrev[aria-disabled=true] {
+    pointer-events: none;
+    background: var(--dark-600);
+    color: var(--dark-400);
+    opacity: 0.8;
+}
+
+/*.container .card .rowNext.disabled,*/
+/*.container .card .rowPrev.disabled {*/
+/*    background: var(--dark-600);*/
+/*    color: var(--dark-400);*/
+/*}*/
+
+.container .card .rowNext {
+    grid-area: 1 / 6 / 6 / 6;
+    justify-self: end;
+    right: -20px;
+}
+
+.container .card .rowPrev {
+    grid-area: 1 / 1 / 6 / 1;
+    justify-self: start;
+    left: -20px;
+}
+
+.container .card .header {
+    grid-area: 1 / 2 / 2 / 6;
+    background: var(--main-prm);
+    position: relative;
+    top: calc(100% / -3);
+    height: 80%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: var(--main-dark);
+    font-weight: 550;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+.container .card .changeFormRadio {
+    grid-area: 2 / 2 / 3 / 6;
+    position: relative;
+    top: -20px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid var(--main-prm);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container .card .changeFormRadio button {
+    padding: 5px 0;
+    width: 100%;
+    height: 100%;
+    color: var(--main-prm);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.container .card .changeFormRadio button.active {
+    width: 100%;
+    height: 100%;
+    background: var(--main-prm);
+    color: var(--main-dark);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.container .card .data {
+    grid-area: 3 / 2 / 4 / 6;
+    background: #2F3543;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+
+.container .card .data .exception {
+    text-align: center;
+    color:  var(--dark-600);
+    font-size: 20px;
+}
+
+.container .card .data .choiceBtn {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-prm);
+    border-radius: 10px;
+}
+
+.container .card .emps {
+    grid-area: 4 / 2 / 5 / 6;
+    margin-bottom: 5px;
+    width: 100%;
+    background: #2F3543;
+    display: grid;
+    grid-template: 40px auto / repeat(6, 1fr);
+    grid-gap: 10px;
+}
+
+.container .card .emps div {
+    grid-area: 1 / 1 / 2 / 7;
+    justify-self: center;
+    color: var(--dark-600);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+.container .card .emps span {
+    grid-column: span 3;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    /*justify-self: center;*/
+}
+
+/*.container .card .emps span label {*/
+/*    padding-left: 15px;*/
+/*    color: var(--dark-600);*/
+/*}*/
+
+/*.container .card .emps span input:checked {*/
+/*    color: var(--text);*/
+/*}*/
+
+.container .card .footer {
+    grid-area: 5 / 2 / 6 / 6;
+    width: 100%;
+    position: relative;
+    bottom: calc(100% / -2);
+}
+
+.container .card .footer button {
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    background: var(--main-prm);
+}
+
+.container .card button {
+    background: transparent;
+    border: none;
+    transition: 0.5s;
+    color: var(--main-prm);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+.container .card button:hover {
+    background: var(--dark-400);
+}
+
+.container .card button:focus {
+    background: var(--dark-500);
+}
+
+.container .card button.active {
+    background: var(--main-prm);
+    text-transform: uppercase;
+    color: var(--main-dark);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+.container .card button.active:hover {
+    background: var(--prm-400);
+}
+
+.container .card button.active:focus {
+    background: var(--prm-500);
+}
+
+.container .card button[aria-disabled=true],
+.container .card button[aria-disabled=true] {
+    pointer-events: none;
+    background: var(--dark-600);
+    color: var(--dark-400);
+    opacity: 0.8;
+}
+
+.formEntering {
+    animation: show .5s forwards;
+}
+
+.formExiting {
+    animation: hide .5s forwards;
+}
+
+.toNextPeriodStart {
+    animation: goToLeft .2s forwards;
+}
+
+.toNextPeriodEnd {
+    animation: goFromRight .2s forwards;
+}
+
+.toPrevPeriodStart {
+    animation: goToRight .2s forwards;
+}
+
+.toPrevPeriodEnd {
+    animation: goFromLeft .2s forwards;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        /*transform: translateX(-150px);*/
+    }
+    100% {
+        opacity: 1;
+        /*transform: translateX(0px);*/
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        /*transform: translateX(0px);*/
+    }
+    100% {
+        opacity: 0;
+        /*transform: translateX(150px);*/
+    }
+}
+
+@keyframes goToLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+@keyframes goToRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+@keyframes goFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes goFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/*@media(max-width: 1200px) {*/
+/*    .container .card .emps span {*/
+/*        grid-column: span 2;*/
+/*    }*/
+/*}*/
+
+@media(max-width: 768px) {
+    .container .card {
+        grid-column: 3 / span 8;
+    }
+
+    .container .card .emps span {
+        grid-column: span 3;
+    }
+}
+
+@media(max-width: 576px) {
+    .container .card {
+        grid-column: 2 / span 10;
+    }
+
+    .container .card .emps span {
+        grid-column: span 6;
+    }
+}

@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
+import {Context} from "../index";
+import LoginForm from "../components/login/LoginForm";
 
-const LoginForm = () => {
+const LoginPage = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [name, setName] = useState<string>('')
@@ -11,7 +12,10 @@ const LoginForm = () => {
     const {store} = useContext(Context)
 
     return (
-        <div>
+        <>
+
+            <LoginForm/>
+
             <input
                 onChange={e => setEmail(e.target.value)}
                 value={email}
@@ -45,8 +49,8 @@ const LoginForm = () => {
             <button onClick={() => store.logout()}>
                 Logout
             </button>
-        </div>
+        </>
     );
 };
 
-export default observer(LoginForm);
+export default observer(LoginPage);

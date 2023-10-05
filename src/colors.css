@@ -1,0 +1,27 @@
+:root {
+    --main-prm: #9defde;
+    --prm-600: #d6f8f0;
+    --prm-500: #cbf7ed;
+    --prm-400: #c0f5e9;
+    --prm-300: #b5f3e5;
+    --prm-200: #a9f1e2;
+    --main-dark: #19202F;
+    --main-dark-shadowed: #0F131C;
+    --dark-600: #90939c;
+    --dark-500: #767a84;
+    --dark-400: #5d626e;
+    --dark-300: #464b58;
+    --dark-200: #2f3543;
+    --text-active: #fff;
+    --text: #D1D3D6;
+
+    --fon: #19202F;
+    --sb: #2f3543;
+    /*--sb: #25313e;*/
+    --scd: #fff;
+    --prm: #FAF8F7;
+    --prm-lt: #505965;
+    --txt: #D1D3D6;
+    --mt-bg: #9defde;
+    --mt: #19202f;
+}

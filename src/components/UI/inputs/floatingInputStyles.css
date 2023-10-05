@@ -1,0 +1,72 @@
+.inputBox__floating {
+    position: relative;
+    width: 100%;
+}
+
+.inputBox__floating input {
+    width: 100%;
+    padding: 10px;
+    /*border: 1px solid #231829;*/
+    border: 1px solid #616D6D;
+    background: transparent;
+    border-radius: 5px;
+    outline: none;
+    /*color: #909090;*/
+    color: #fff !important;
+}
+.inputBox__floating label {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #616D6D;
+    transition: 0.2s;
+    /*text-transform: uppercase;*/
+}
+
+/*.inputBox__floating input:valid ~ span,*/
+/*.inputBox__floating input:focus ~ span {*/
+/*    color: #231829;*/
+/*    transform: translateX(10px) translateY(-7px);*/
+/*    font-size: 0.90em;*/
+/*    padding: 0 10px;*/
+/*    background-color: #fffcf5;*/
+/*    border-left: 1px solid #231829;*/
+/*    border-right: 1px solid #231829;*/
+/*    letter-spacing: 0.2em;*/
+/*}*/
+
+/*dark*/
+
+.inputBox__floating input:valid ~ label,
+/*.inputBox__floating input:invalid ~ span,*/
+.inputBox__floating input:not(:placeholder-shown) ~ label,
+.inputBox__floating input:focus ~ label {
+    color: #19202F;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.90em;
+    padding: 0 10px;
+    background-color: #9DEFDE;
+    letter-spacing: 0.1em;
+    border-radius: 3px;
+}
+
+/*.inputBox__floating input:invalid ~ span {*/
+/*    color: #19202F;*/
+/*    transform: translateX(10px) translateY(-7px);*/
+/*    font-size: 0.90em;*/
+/*    padding: 0 10px;*/
+/*    background-color: #f44336;*/
+/*    letter-spacing: 0.1em;*/
+/*    border-radius: 3px;*/
+/*}*/
+
+.inputBox__floating input:valid,
+.inputBox__floating input:not(:placeholder-shown),
+.inputBox__floating input:focus {
+    border: 1px solid #9DEFDE;
+}
+
+
+

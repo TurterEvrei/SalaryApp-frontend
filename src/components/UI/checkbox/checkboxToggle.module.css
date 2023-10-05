@@ -1,0 +1,60 @@
+@import "../../../colors.css";
+
+.action {
+    margin: 5px 0;
+    position: relative;
+    width: 30px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.action input {
+    position: absolute;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.action i {
+    position: absolute;
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    background: var(--dark-300);
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.action input:checked ~ i {
+    background: var(--main-prm);
+}
+
+.action i::before {
+    content: '';
+    position: absolute;
+    top: -2.5px;
+    left: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: var(--text);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+.action input:checked ~ i::before {
+    left: calc(100% - 16px);
+    background: var(--dark-600);
+}
+
+.checkLabel {
+    padding-left: 40px;
+    color: var(--dark-600);
+    transition: 0.2s;
+}
+
+.action input:checked ~ .checkLabel{
+    color: var(--text);
+}

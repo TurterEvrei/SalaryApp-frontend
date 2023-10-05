@@ -1,0 +1,85 @@
+@import "./colors.css";
+
+.container {
+    background: transparent;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 90px 1fr 100px;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+
+.container .pageHeader {
+    padding: 0 20px;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.container .pageHeader .pageName {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.container .pageHeader .pageDescription {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark-400);
+}
+
+.container .pageHeader::before {
+    content: '';
+    position: absolute;
+    top: 90px;
+    height: 1px;
+    width: calc(100% - 40px);
+    background: var(--dark-300);
+}
+
+.container .cardWrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+button {
+    background: transparent;
+    border: none;
+    transition: 0.5s;
+    color: var(--main-prm);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+button:hover {
+    background: var(--dark-400);
+}
+
+button:focus {
+    background: var(--dark-500);
+}
+
+.buttonPrimary {
+    background: var(--main-prm);
+    text-transform: uppercase;
+    color: var(--main-dark);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    font-size: 18px;
+}
+
+.buttonPrimary:hover {
+    background: var(--prm-400);
+}
+
+.buttonPrimary:focus {
+    background: var(--prm-500);
+}
+
+button[aria-disabled=true],
+button[aria-disabled=true] {
+    pointer-events: none;
+    background: var(--dark-600);
+    color: var(--dark-400);
+    opacity: 0.8;
+}

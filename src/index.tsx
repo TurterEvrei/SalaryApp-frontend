@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Store from "./store/store";
 import {BrowserRouter} from "react-router-dom";
+import './customStyles.scss';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import {ChakraProvider} from "@chakra-ui/react";
+import theme from "./theme/theme";
+// import './styles.css';
 
 interface State {
     store: Store,
@@ -22,9 +27,11 @@ root.render(
         store
     }}>
         {/*<React.StrictMode>*/}
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+        {/*    <BrowserRouter>*/}
+        <ChakraProvider theme={theme}>
+            <App />
+        </ChakraProvider>
+            {/*</BrowserRouter>*/}
         {/*</React.StrictMode>*/}
     </Context.Provider>
 
