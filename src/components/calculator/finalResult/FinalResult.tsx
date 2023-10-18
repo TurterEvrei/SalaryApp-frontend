@@ -39,6 +39,7 @@ const FinalResult = (
         } as IDailyReport)
         const response = await DailyReportService.saveDailyReport({
             ...dailyReport,
+            //@ts-ignore
             department: department.id
         })
         console.log(response.data)
@@ -76,10 +77,10 @@ const FinalResult = (
                     </tr>
                     </tbody>
                 </table>
-                <FloatingInput name='Дата'
+                <FloatingInput label='Дата'
                                type='date'
                                onChange={e => setDailyReport({
-                                   ...dailyReport, date: e.target.value
+                                   ...dailyReport, date: e.target.value as unknown as Date
                                })}
                 />
                 <button className={cl.backBtn}

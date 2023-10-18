@@ -4,6 +4,6 @@ export interface IDailyReport {
     id: number | null;
     payments: IPayment[];
     department: number;
-    date: string;
-    dateOfCreated: string;
+    date: Date;
+    dateOfCreated?: Date;
 }

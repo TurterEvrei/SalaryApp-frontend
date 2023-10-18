@@ -49,7 +49,9 @@ const Sidebar = () => {
                         <SidebarLink to={navLink.path}
                                      name={navLink.name}
                                      iconClass={navLink.iconClass}
-                                     requiredRoles={navLink.roles}/>
+                                     requiredRoles={navLink.roles}
+                                     key={navLink.path}
+                        />
                     )}
                 </div>
                 <div className={cl.bottom}>
@@ -67,7 +69,9 @@ const Sidebar = () => {
                         <SidebarLink to={navLink.path}
                                      name={navLink.name}
                                      iconClass={navLink.iconClass}
-                                     requiredRoles={navLink.roles}/>
+                                     requiredRoles={navLink.roles}
+                                     key={navLink.path}
+                        />
                     )}
                 </div>
             </ul>

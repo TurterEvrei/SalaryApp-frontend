@@ -30,10 +30,17 @@ const Menu = {
     }
 }
 
+const Input = {
+    defaultProps: {
+        focusBorderColor: "primary.100"
+    }
+}
+
 export const components = {
     Tabs,
     Table,
-    Menu
+    Menu,
+    Input,
 }
 
 const styles = {

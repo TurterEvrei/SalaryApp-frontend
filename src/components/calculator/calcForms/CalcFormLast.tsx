@@ -34,7 +34,7 @@ const CalcFormLast = (
     return (
         <form className={cl.data}>
             {lastPeriodInputsArray.map(calcInput =>
-                <FloatingInput name={calcInput.name}
+                <FloatingInput label={calcInput.name}
                                type={calcInput.inputType}
                                inputName={calcInput.inputName}
                                onChange={e => setLastPeriodInfoArray(

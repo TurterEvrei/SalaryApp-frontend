@@ -21,6 +21,7 @@ const CalcEmps = (
     const [empList, setEmpList] = useState<IEmployee[]>([])
 
     useEffect(() => {
+        //@ts-ignore
         EmployeeService.fetchEmployeesByDepartmentId(department.id)
             .then(result => {
                 console.log(result.data)

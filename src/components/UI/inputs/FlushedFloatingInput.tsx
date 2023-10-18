@@ -1,27 +1,23 @@
-import './floatingInputStyles.css'
-import React, {HTMLInputTypeAttribute, SetStateAction} from "react";
+import React, {HTMLInputTypeAttribute} from 'react';
+import cl from './flushedFloatingInput.module.css'
 
-// const FloatingInput = ({children}: {children: JSX.Element}) => {
-const FloatingInput = (
+const FlushedFloatingInput = (
     {
-        label,
+        name,
         type,
-        // value,
         onChange,
         inputName,
         value
     }: {
-        label: string,
+        name: string,
         type: HTMLInputTypeAttribute,
-        // value: string | number;
         onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-        // onChange: React.Dispatch<SetStateAction<string>> | React.Dispatch<SetStateAction<number>>
         inputName?: string,
         value?: string | number
     }) => {
 
     return (
-        <div className='inputBox__floating'>
+        <div className={cl.inputBox__floating}>
             <input type={type} placeholder=' ' name={inputName} value={value} required
                 // @ts-ignore
                    onChange={onChange}
@@ -30,10 +26,11 @@ const FloatingInput = (
             {/*{children}*/}
             <label>
                 {/*{children.props.name}*/}
-                {label}
+                {name}
             </label>
         </div>
     );
 };
 
-export default FloatingInput;
+
+export default FlushedFloatingInput;

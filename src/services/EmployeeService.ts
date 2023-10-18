@@ -16,4 +16,20 @@ export default class EmployeeService {
         })
     }
 
+    static async createEmployee(employee: IEmployee): Promise<AxiosResponse<IEmployee>> {
+        return $api.post<IEmployee>(`${API_URL}/manager/employee`, employee);
+    }
+
+    static async editEmployee(employee: IEmployee): Promise<AxiosResponse<boolean>> {
+        return $api.put<boolean>(`${API_URL}/manager/employee`, employee);
+    }
+
+    static async editEmployees(employees: IEmployee[]): Promise<AxiosResponse<boolean>> {
+        return $api.put<boolean>(`${API_URL}/manager/employees`, employees);
+    }
+
+    static async deleteEmployee(id: number): Promise<AxiosResponse<boolean>> {
+        return $api.delete(`${API_URL}/manager/employee/${id}`);
+    }
+
 }

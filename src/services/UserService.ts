@@ -22,8 +22,20 @@ export default class UserService {
         return $api.get<IUser[]>(`${API_URL}/admin/users`)
     }
 
+    static async createUser(user: IUser): Promise<AxiosResponse<IUser>> {
+        return $api.post<IUser>(`${API_URL}/admin/users`, user)
+    }
+
     static async editUser(user: IUser): Promise<AxiosResponse<IUser>> {
-        return $api.put<IUser>(`${API_URL}/admin/users`, {...user})
+        return $api.put<IUser>(`${API_URL}/admin/user`, {...user})
+    }
+
+    static async editUsers(users: IUser[]): Promise<AxiosResponse<boolean>> {
+        return $api.put<boolean>(`${API_URL}/admin/users`, users)
+    }
+
+    static async deleteUser(id: number): Promise<AxiosResponse<boolean>> {
+        return $api.delete<boolean>(`${API_URL}/admin/users/${id}`)
     }
 
 }

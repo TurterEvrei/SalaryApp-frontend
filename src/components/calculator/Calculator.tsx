@@ -174,7 +174,7 @@ const Calculator = () => {
                             procentFromSales: proc,
                             tips: tips,
                             totalPayment: proc + tips,
-                        })
+                        } as IPayment)
                     }
             })
         }

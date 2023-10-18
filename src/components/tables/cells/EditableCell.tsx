@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Column, Row, Table} from "@tanstack/react-table";
-import {IUser} from "../../models/user/IUser";
+import {IUser} from "../../../models/user/IUser";
 import {Input} from "@chakra-ui/react";
 
 const EditableCell = (
@@ -11,9 +11,9 @@ const EditableCell = (
         table,
     }: {
         getValue: () => any,
-        row: Row<IUser>,
-        column: Column<IUser>,
-        table: Table<IUser>,
+        row: Row<any>,
+        column: Column<any>,
+        table: Table<any>,
     }
 ) => {
 

@@ -1,16 +1,15 @@
 .inputBox__floating {
-    margin: 3px 0;
     position: relative;
     width: 100%;
 }
 
 .inputBox__floating input {
     width: 100%;
-    padding: 8px 10px 8px 10px;
+    padding-top: 10px;
+    padding-left: 5px;
     /*border: 1px solid #231829;*/
-    border: 1px solid #616D6D;
+    border-bottom: 1px solid #616D6D;
     background: transparent;
-    border-radius: 5px;
     outline: none;
     /*color: #909090;*/
     color: #fff !important;
@@ -41,17 +40,20 @@
 /*dark*/
 
 .inputBox__floating input:valid ~ label,
-/*.inputBox__floating input:invalid ~ span,*/
+    /*.inputBox__floating input:invalid ~ span,*/
 .inputBox__floating input:not(:placeholder-shown) ~ label,
 .inputBox__floating input:focus ~ label {
-    color: #19202F;
-    height: 48%;
-    transform: translateX(10px) translateY(-11px);
-    font-size: 0.8em;
-    padding: 0px 10px;
-    background-color: #9DEFDE;
-    letter-spacing: 0.1em;
-    border-radius: 3px;
+    color: #9DEFDE;
+        transform: translateY(-7px);
+        font-size: 0.90em;
+        padding: 0 10px;
+    /*color: #19202F;*/
+    /*transform: translateX(10px) translateY(-7px);*/
+    /*font-size: 0.90em;*/
+    /*padding: 0 10px;*/
+    /*background-color: #9DEFDE;*/
+    /*letter-spacing: 0.1em;*/
+    /*border-radius: 3px;*/
 }
 
 /*.inputBox__floating input:invalid ~ span {*/
@@ -67,7 +69,7 @@
 .inputBox__floating input:valid,
 .inputBox__floating input:not(:placeholder-shown),
 .inputBox__floating input:focus {
-    border: 1px solid #9DEFDE;
+    border-bottom: 1px solid #9DEFDE;
 }
 
 

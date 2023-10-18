@@ -23,7 +23,7 @@ const CalcFormSimple = (
 
     return (
         <form className={cl.data}>
-            <FloatingInput name='Продажи'
+            <FloatingInput label='Продажи'
                            type='number'
                            onChange={(e) =>
                                setCurrentPeriodData(
@@ -32,7 +32,7 @@ const CalcFormSimple = (
                            value={currentPeriodData.procentFromSales === -1 ? '' : currentPeriodData.procentFromSales}
                            inputName={'procentFromSales'}
             />
-            <FloatingInput name='Сервис'
+            <FloatingInput label='Сервис'
                            type='number'
                            onChange={(e) =>
                                setCurrentPeriodData(

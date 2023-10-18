@@ -14,8 +14,8 @@ import {
 } from "@chakra-ui/react";
 import {ChevronDownIcon, SearchIcon} from "@chakra-ui/icons";
 import {Column, Row, Table} from "@tanstack/react-table";
-import {IUser} from "../../models/user/IUser";
-import {IEmployee} from "../../models/dto/IEmployee";
+import {IUser} from "../../../models/user/IUser";
+import {IEmployee} from "../../../models/dto/IEmployee";
 
 const EmployeeCell = (
     {

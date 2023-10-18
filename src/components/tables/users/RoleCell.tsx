@@ -1,6 +1,6 @@
 import React from 'react';
 import {Column, Row, Table} from "@tanstack/react-table";
-import {IUser} from "../../models/user/IUser";
+import {IUser} from "../../../models/user/IUser";
 import {
     Box,
     Button,
@@ -12,8 +12,8 @@ import {
     PopoverContent,
     PopoverTrigger
 } from "@chakra-ui/react";
-import CheckboxToggleWithLabel from "../UI/checkbox/CheckboxToggleWithLabel";
-import {Role} from "../../models/user/Role";
+import CheckboxToggleWithLabel from "../../UI/checkbox/CheckboxToggleWithLabel";
+import {Role} from "../../../models/user/Role";
 import {ChevronDownIcon} from "@chakra-ui/icons";
 
 const RoleCell = (
@@ -50,7 +50,7 @@ const RoleCell = (
                         rightIcon={<ChevronDownIcon />}
                         letterSpacing={1}
                 >
-                    Роли
+                    {roles.sort()[0]}
                 </Button>
             </PopoverTrigger>
             <PopoverContent>

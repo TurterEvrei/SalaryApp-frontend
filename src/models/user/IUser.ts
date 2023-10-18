@@ -8,5 +8,5 @@ export interface IUser {
     phoneNumber: string;
     active: boolean;
     roles: Role[];
-    employee?: number;
+    employee?: number | null;
 }

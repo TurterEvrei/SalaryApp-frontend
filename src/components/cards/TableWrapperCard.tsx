@@ -3,9 +3,11 @@ import {Card, CardBody, CardHeader, Heading} from "@chakra-ui/react";
 
 const TableWrapperCard = (
     {
-        children
+        children,
+        title,
     }: {
         children: JSX.Element
+        title: string,
     }
 ) => {
     return (
@@ -23,10 +25,12 @@ const TableWrapperCard = (
                          letterSpacing={2}
                          textAlign="center"
                 >
-                    Таблица пользователей
+                    {title}
                 </Heading>
             </CardHeader>
-            <CardBody>
+            <CardBody top={-2}
+                      position="relative"
+            >
                 {children}
             </CardBody>
         </Card>

@@ -1,8 +1,9 @@
 import {Role} from "../../models/user/Role";
 import Calculator from "../calculator/Calculator";
-import {forAdmin, forMaster} from "../../utils/requiredRoles";
+import {forAdmin, forManager, forMaster} from "../../utils/requiredRoles";
 import CalcPage from "../../pages/CalcPage";
 import AdminPage from "../../pages/AdminPage";
+import ManagementPage from "../../pages/ManagementPage";
 
 export interface appRoute {
     path: string;
@@ -15,9 +16,12 @@ export const appRoutesList: appRoute[] = [
         element: <CalcPage/>,
         requiredRoles: forMaster
     },
+    {path: '/management',
+        element: <ManagementPage/>,
+        requiredRoles: forManager
+    },
     {path: '/admin',
         element: <AdminPage/>,
         requiredRoles: forAdmin
     },
-
 ]

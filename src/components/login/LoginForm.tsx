@@ -69,11 +69,11 @@ const LoginForm = () => {
                               onSubmit={submitSignIn}
                         >
                             <fieldset>
-                                <FloatingInput name='Email'
+                                <FloatingInput label='Email'
                                                type='email'
                                                onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <FloatingInput name='Пароль'
+                                <FloatingInput label='Пароль'
                                                type='password'
                                                onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -94,19 +94,19 @@ const LoginForm = () => {
                               autoComplete='false'
                         >
                             <fieldset>
-                                <FloatingInput name='Email'
+                                <FloatingInput label='Email'
                                                type='email'
                                                onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <FloatingInput name='Пароль'
+                                <FloatingInput label='Пароль'
                                                type='password'
                                                onChange={(e) => setPassword(e.target.value)}
                                 />
-                                <FloatingInput name='Имя'
+                                <FloatingInput label='Имя'
                                                type='text'
                                                onChange={(e) => setName(e.target.value)}
                                 />
-                                <FloatingInput name='Номер телефона'
+                                <FloatingInput label='Номер телефона'
                                                type='tel'
                                                onChange={(e) => setPhoneNumber(e.target.value)}
                                 />

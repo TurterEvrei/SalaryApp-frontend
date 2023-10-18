@@ -1,6 +1,6 @@
 import React from 'react';
 import {Column, Row, Table} from "@tanstack/react-table";
-import {IUser} from "../../models/user/IUser";
+import {IUser} from "../../../models/user/IUser";
 import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import {ChevronDownIcon} from "@chakra-ui/icons";
 

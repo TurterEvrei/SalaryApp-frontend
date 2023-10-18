@@ -1,5 +1,5 @@
 export interface IDepartment {
-    id: number;
+    id?: number;
     name: string;
     employees: number[];
     calcSetting: number;

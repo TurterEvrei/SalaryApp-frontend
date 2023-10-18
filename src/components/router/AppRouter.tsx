@@ -11,7 +11,9 @@ const AppRouter = () => {
     const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/' element={<Layout/>}>
             {appRoutesList.map(route =>
-                <Route path={route.path} element={
+                <Route path={route.path}
+                       key={route.path}
+                       element={
                     // route.element
                     <PrivateRoute roles={route.requiredRoles}>
                         {route.element}
