@@ -36,11 +36,23 @@ const Input = {
     }
 }
 
+const Alert = {
+    variants: {
+        toast: {
+            closeButton: {
+                color: "red.500",
+                bg: "red.500"
+            }
+        }
+    }
+}
+
 export const components = {
     Tabs,
     Table,
     Menu,
     Input,
+    Alert,
 }
 
 const styles = {

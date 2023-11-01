@@ -26,6 +26,8 @@ import DailyReportModal from "../../modals/DailyReportModal";
 import {IEmployee} from "../../../models/dto/IEmployee";
 import EmployeeService from "../../../services/EmployeeService";
 import ActionsReportCell from "./ActionsReportCell";
+import NoDepartment from "../../calculator/exeptions/NoDepartment";
+import Loader from "../../UI/loader/Loader";
 
 const columns: ColumnDef<IDailyReport>[] = [
     {
@@ -75,9 +77,10 @@ const DailyReportsTable = () => {
     })
     const [columnFilters, setColumnFilters] = useState<ColumnFilter[]>([])
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+    const [isLoading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
-        fetchUserDepartments()
+        fetchUserDepartments().then(() => setLoading(false))
     }, [])
 
     useEffect(() => {
@@ -162,6 +165,16 @@ const DailyReportsTable = () => {
             }
         }
     })
+
+    if (isLoading) {
+        return <Loader/>;
+    }
+
+    if (departments.length === 0) {
+        return (
+            <NoDepartment/>
+        );
+    }
 
     return (
         <TableWrapperCard title={'Отчеты'}>

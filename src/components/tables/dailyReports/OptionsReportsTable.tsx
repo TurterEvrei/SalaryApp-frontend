@@ -55,8 +55,10 @@ const OptionsReportsTable = (
     return (
         <Grid gridTemplateAreas={'"selection actions" "filters actions"'}
               gridTemplateRows={'auto auto'}
-              gridTemplateColumns={'1fr 150px'}
+              gridTemplateColumns={'1fr 100px'}
               gridGap={2}
+              position={'relative'}
+              top={-4}
         >
             <HStack gridArea={"selection"}
                     spacing={3}

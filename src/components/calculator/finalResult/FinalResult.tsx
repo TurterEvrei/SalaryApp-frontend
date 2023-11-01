@@ -4,6 +4,9 @@ import {IDailyReport} from "../../../models/dto/IDailyReport";
 import FloatingInput from "../../UI/inputs/FloatingInput";
 import {IDepartment} from "../../../models/dto/IDepartment";
 import DailyReportService from "../../../services/DailyReportService";
+import {useToast} from "@chakra-ui/react";
+import {errorSaveToast, successSaveToast} from "../../toast/Toasts";
+import {useNavigate} from "react-router-dom";
 
 const FinalResult = (
     {
@@ -19,6 +22,9 @@ const FinalResult = (
     }
 ) => {
 
+    const toast = useToast()
+    const navigate = useNavigate()
+
     var kefFromSettings = department.calcSetting
 
     var departmentIncome = Math.floor(
@@ -33,16 +39,22 @@ const FinalResult = (
     }
 
     const saveDailyReport = async () => {
-        console.log({
-            ...dailyReport,
-            department: department.id,
-        } as IDailyReport)
-        const response = await DailyReportService.saveDailyReport({
-            ...dailyReport,
-            //@ts-ignore
-            department: department.id
-        })
-        console.log(response.data)
+        try {
+            const {data} = await DailyReportService.saveDailyReport({
+                ...dailyReport,
+                //@ts-ignore
+                department: department.id
+            })
+            if (data) {
+                successSaveToast(toast)
+                navigate('/statistic')
+            } else {
+                errorSaveToast(toast)
+            }
+
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
@@ -61,8 +73,8 @@ const FinalResult = (
                         </tr>
                     </thead>
                     <tbody>
-                    {dailyReport.payments.map(payment =>
-                        <tr>
+                    {dailyReport.payments.map((payment, index) =>
+                        <tr key={index}>
                             <td>{payment.employeeName}</td>
                             <td>{payment.procentFromSales}</td>
                             <td>{payment.tips}</td>
@@ -80,8 +92,9 @@ const FinalResult = (
                 <FloatingInput label='Дата'
                                type='date'
                                onChange={e => setDailyReport({
-                                   ...dailyReport, date: e.target.value as unknown as Date
+                                   ...dailyReport, date: new Date(e.target.value)
                                })}
+                               value={new Date(dailyReport.date).toISOString().substring(0,10)}
                 />
                 <button className={cl.backBtn}
                         onClick={e => setShowFinalResult(false)}

@@ -4,6 +4,8 @@ import {Column, Row, Table} from "@tanstack/react-table";
 import {IDepartment} from "../../../models/dto/IDepartment";
 import {IDailyReport} from "../../../models/dto/IDailyReport";
 import DailyReportService from "../../../services/DailyReportService";
+import {useToast} from "@chakra-ui/react";
+import {errorDeleteToast, successDeleteToast} from "../../toast/Toasts";
 
 const ActionsReportCell = (
     {
@@ -25,6 +27,7 @@ const ActionsReportCell = (
     }
 ) => {
     const currentDailyReport = row.original
+    const toast = useToast()
 
     function onOpenModal() {
         setCurrentGlobalDailyReport(currentDailyReport)
@@ -34,11 +37,17 @@ const ActionsReportCell = (
     async function deleteDailyReport(id: number) {
         try {
             const {data} = await DailyReportService.deleteDailyReport(id)
-            if (data) setDailyReports(prev =>
-                prev.filter(r => r.id !== id)
-            )
+            if (data) {
+                setDailyReports(prev =>
+                    prev.filter(r => r.id !== id)
+                )
+                successDeleteToast(toast)
+            } else {
+                errorDeleteToast(toast)
+            }
         } catch (e) {
             console.log(e)
+            errorDeleteToast(toast)
         }
     }
 

@@ -45,7 +45,7 @@ button {
     background: transparent;
     border: none;
     transition: 0.5s;
-    color: var(--main-prm);
+    /*color: var(--main-prm);*/
     font-weight: 500;
     /*letter-spacing: 0.2rem;*/
     font-size: 18px;

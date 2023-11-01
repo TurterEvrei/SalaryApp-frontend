@@ -1,25 +1,33 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import cl from "../Sidebar.module.css";
 import {Link, useMatch} from "react-router-dom";
 import {Role} from "../../../../models/user/Role";
+import {Context} from "../../../../index";
 
 const SidebarLink = (
     {
         to,
         name,
         iconClass,
-        requiredRoles
+        requiredRoles,
+        onClickFunc,
     }: {
         to: string,
         name: string,
         iconClass:string,
-        requiredRoles: Role[]
+        requiredRoles: Role[],
+        onClickFunc?: () => void,
     }) => {
+
+    const {store} = useContext(Context)
 
     const match = useMatch(to);
 
     return (
-        <li className={match ? cl.active : ''}>
+        <li className={match ? cl.active : ''}
+            onClick={onClickFunc}
+            hidden={!store.userCred.roles.some(role => requiredRoles.includes(role))}
+        >
             <Link to={to}>
                 <div className={cl.icon}>
                     <i className={iconClass}/>

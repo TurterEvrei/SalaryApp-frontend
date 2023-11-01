@@ -4,7 +4,7 @@ import DailyReportsTable from "../components/tables/dailyReports/DailyReportsTab
 
 const ManagementPage = () => {
     return (
-        <Box mx={5} py={5}>
+        <Box mx={5} py={5} h={'100%'}>
             <DailyReportsTable/>
         </Box>
     );

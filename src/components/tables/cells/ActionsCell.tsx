@@ -1,5 +1,5 @@
 import React from 'react';
-import {IconButton, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
+import {Center, IconButton, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
 import {DeleteIcon, EditIcon, HamburgerIcon, InfoIcon} from "@chakra-ui/icons";
 
 const ActionsCell = (
@@ -14,28 +14,30 @@ const ActionsCell = (
     }
 ) => {
     return (
-        <Menu>
-            <MenuButton
-                as={IconButton}
-                icon={<HamburgerIcon />}
-                variant="outline"
-                size="sm"
+        <Center>
+            <Menu>
+                <MenuButton
+                    as={IconButton}
+                    icon={<HamburgerIcon />}
+                    variant="outline"
+                    size="sm"
 
-            />
-            <MenuList letterSpacing={1}>
-                <MenuItem icon={<InfoIcon />}
-                          onClick={onInfoEntity}
-                >
-                    Подробнее
-                </MenuItem>
-                <MenuItem icon={<DeleteIcon />}
-                    //@ts-ignore
-                          onClick={e => deleteEntity(currentEntity.id)}
-                >
-                    Удалить
-                </MenuItem>
-            </MenuList>
-        </Menu>
+                />
+                <MenuList letterSpacing={1}>
+                    <MenuItem icon={<InfoIcon />}
+                              onClick={onInfoEntity}
+                    >
+                        Подробнее
+                    </MenuItem>
+                    <MenuItem icon={<DeleteIcon />}
+                        //@ts-ignore
+                              onClick={e => deleteEntity(currentEntity.id)}
+                    >
+                        Удалить
+                    </MenuItem>
+                </MenuList>
+            </Menu>
+        </Center>
     );
 };
 

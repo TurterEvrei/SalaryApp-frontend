@@ -38,4 +38,8 @@ export default class UserService {
         return $api.delete<boolean>(`${API_URL}/admin/users/${id}`)
     }
 
+    static async changeUserPassword(password: string): Promise<AxiosResponse<boolean>> {
+        return $api.post<boolean>(`${API_URL}/password`, {password})
+    }
+
 }

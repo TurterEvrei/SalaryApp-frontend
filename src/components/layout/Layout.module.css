@@ -8,7 +8,7 @@
         /*z-index: -1;*/
 }
 
-@media(max-width: 576px) {
+@media(max-width: 876px) {
         .contentSection {
                 left: 0;
                 width: 100%;

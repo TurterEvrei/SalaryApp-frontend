@@ -33,7 +33,7 @@ const CalcFormLast = (
 
     return (
         <form className={cl.data}>
-            {lastPeriodInputsArray.map(calcInput =>
+            {lastPeriodInputsArray.map((calcInput, index) =>
                 <FloatingInput label={calcInput.name}
                                type={calcInput.inputType}
                                inputName={calcInput.inputName}
@@ -50,6 +50,7 @@ const CalcFormLast = (
                                value={lastPeriodInfoArray?.find(val =>
                                    val.id === calcInput.id
                                )?.value}
+                               key={index}
                 />
             )}
         </form>

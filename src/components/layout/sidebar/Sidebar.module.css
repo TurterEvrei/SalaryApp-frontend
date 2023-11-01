@@ -62,9 +62,12 @@
 
 .sidebar.active ul li.active,
 .sidebar:hover ul li.active {
-    background: var(--main-dark-shadowed);
+    /*background: var(--main-dark-shadowed);*/
+    background: var(--main-dark);
     /*transition: box-shadow 0.5s;*/
     transition: 0.2s;
+    /*margin-right: 5px;*/
+    border-radius: 0;
 }
 
 .sidebar ul li.active::before {
@@ -94,14 +97,16 @@
 }
 .sidebar:hover ul li.active:before,
 .sidebar.active ul li.active:before {
-    box-shadow: 5px 5px 0 5px var(--main-dark-shadowed);
+    box-shadow: 0 0 0 0 transparent;
     transition: box-shadow 0.5s;
     /*animation: liShadow 0.5s forwards;*/
+    /*background-color: white;*/
 }
 
 .sidebar:hover ul li.active:after,
 .sidebar.active ul li.active:after{
-    box-shadow: 5px -5px 0 5px var(--main-dark-shadowed);
+    /*box-shadow: 5px -5px 0 5px var(--main-dark-shadowed);*/
+    box-shadow: 0 0 0 0 transparent;
     transition: box-shadow 0.5s;
     /*animation: opacityNullToFull 0.5s forwards;*/
 }
@@ -183,9 +188,20 @@
     width: 60px;
     /*background: transparent;*/
     background: var(--prm-lt);
+    /*background: var(--dark-400);*/
     /*background: var(--prm);*/
     border-radius: 50%;
     transition: 0.5s;
+}
+
+.sidebar.active ul li.active a .icon::before,
+.sidebar:hover ul li.active a .icon::before {
+    background: transparent;
+    border-radius: 10%;
+    top: 15px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
 }
 
 .sidebar ul li:hover.active a .icon::before {
@@ -270,7 +286,7 @@
     transform: translateY(0px) rotate(315deg);
 }
 
-@media(max-width: 576px) {
+@media(max-width: 876px) {
     .sidebar {
         width: 0;
         padding: 0;

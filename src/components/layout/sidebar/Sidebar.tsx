@@ -1,23 +1,33 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import cl from './Sidebar.module.css';
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import SidebarLink from "./navlinks/SidebarLink";
 import {navLinkBottomList, navLinkMenuList} from "./navlinks/sidebarNavLinks";
+import {Context} from "../../../index";
+import {errorLogoutToast, successLogoutToast} from "../../toast/Toasts";
+import {useToast} from "@chakra-ui/react";
 
-const Sidebar = () => {
+const Sidebar = (
+    {
+        flag,
+    }: {
+        flag: boolean,
+    }
+) => {
 
-    const [isShowSidebar, setShowSidebar] = useState<boolean>(false);
-    const [isActiveToggle, setActiveToggle] = useState<boolean>(false);
+    const [isShowSidebar, setShowSidebar] = useState<boolean>(flag);
+    const [isActiveToggle, setActiveToggle] = useState<boolean>(flag);
+    const {store} = useContext(Context)
+    const toast = useToast()
 
     function showSidebarHandler() {
         setShowSidebar(!isShowSidebar);
         setActiveToggle(!isActiveToggle);
-        console.log(isShowSidebar)
     }
 
-    function activeToggleHandler() {
-        setActiveToggle(!isActiveToggle);
-        console.log(isActiveToggle)
+    function hideSidebarHandler() {
+        setShowSidebar(false)
+        setActiveToggle(false);
     }
 
     const sidebarClasses = [cl.sidebar]
@@ -31,6 +41,11 @@ const Sidebar = () => {
         sidebarClasses.push(cl.active)
     }
 
+    async function logout() {
+        const response = await store.logout()
+        store.isAuth ? errorLogoutToast(toast) : successLogoutToast(toast)
+    }
+
     return (
         <>
         <div className={menuToggleClasses.join(' ')} onClick={showSidebarHandler}></div>
@@ -39,9 +54,9 @@ const Sidebar = () => {
                 <li className={cl.logo}>
                     <a href="#">
                         <div className={cl.icon}>
-                            <i className='bi bi-calculator-fill'/>
+                            <i className='bi bi-cash-coin'/>
                         </div>
-                        <div className={cl.text}>Website logo</div>
+                        <div className={cl.text}>HuiMonet</div>
                     </a>
                 </li>
                 <div className="MenuList">
@@ -51,28 +66,28 @@ const Sidebar = () => {
                                      iconClass={navLink.iconClass}
                                      requiredRoles={navLink.roles}
                                      key={navLink.path}
+                                     onClickFunc={hideSidebarHandler}
                         />
                     )}
                 </div>
                 <div className={cl.bottom}>
-                    {/*<li>*/}
-                    {/*    <a href="#">*/}
-                    {/*        <div className={cl.icon}>*/}
-                    {/*            <div className="imgBox">*/}
-                    {/*                <img src="../../../../public/logo.jpg" alt=""/>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*        <div className={cl.text}>Belbek Abdul</div>*/}
-                    {/*    </a>*/}
-                    {/*</li>*/}
                     {navLinkBottomList.map((navLink, index) =>
                         <SidebarLink to={navLink.path}
                                      name={navLink.name}
                                      iconClass={navLink.iconClass}
                                      requiredRoles={navLink.roles}
                                      key={navLink.path}
+                                     onClickFunc={hideSidebarHandler}
                         />
                     )}
+                    <li onClick={logout}>
+                        <a>
+                            <div className={cl.icon}>
+                                <i className={'bi bi-box-arrow-right'}/>
+                            </div>
+                            <div className={cl.text}>Выход</div>
+                        </a>
+                    </li>
                 </div>
             </ul>
             

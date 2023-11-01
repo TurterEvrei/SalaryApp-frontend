@@ -5,10 +5,12 @@ import {SwitchTransition, CSSTransition} from "react-transition-group";
 const SwitchForms = (
     {
         isChangeEffect,
-        children
+        children,
+        timeout,
     } : {
         isChangeEffect: boolean,
-        children: JSX.Element
+        children: JSX.Element,
+        timeout?: number,
     }
 ) => {
     return (
@@ -17,7 +19,7 @@ const SwitchForms = (
                 // @ts-ignore
 
                 key={isChangeEffect}
-                timeout={200}
+                timeout={timeout || 200}
                 classNames={{
                     enterActive: cl.formEntering,
                     exitActive: cl.formExiting

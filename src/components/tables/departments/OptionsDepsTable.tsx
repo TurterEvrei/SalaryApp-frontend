@@ -58,6 +58,8 @@ const OptionsDepsTable = (
     return (
         <HStack mb={4}
                 spacing={3}
+                position={'relative'}
+                top={-4}
         >
             <InputGroup w="auto">
                 <InputLeftElement>

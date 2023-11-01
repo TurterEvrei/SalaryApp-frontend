@@ -18,6 +18,7 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import SwitchDepartment from "./calcForms/SwitchDepartment";
 import UserService from "../../services/UserService";
+import Loader from "../UI/loader/Loader";
 
 const Calculator = () => {
     const [isShowSwitchingDepartments, setShowSwitchingDepartments] = useState<boolean>(true)
@@ -39,8 +40,12 @@ const Calculator = () => {
             employees: []
         }])
 
-    const [dailyReport, setDailyReport] = useState<IDailyReport>({} as IDailyReport)
-
+    const [dailyReport, setDailyReport] = useState<IDailyReport>({
+        date: new Date().getHours() < 11
+            ? new Date(Date.now() - 12*3600*1000)
+            : new Date(),
+    } as IDailyReport)
+    const [isLoading, setLoading] = useState<boolean>(true)
     const kefFromSettings = department.calcSetting
 
     async function loadDepartments() {
@@ -53,7 +58,7 @@ const Calculator = () => {
     }
     
     useEffect(() => {
-        loadDepartments()
+        loadDepartments().then(() => setLoading(false))
     }, [])
 
     useEffect(
@@ -181,6 +186,8 @@ const Calculator = () => {
         setDailyReport({...dailyReport, payments: paymentsArr})
         setShowFinalResult(true)
     }
+
+    if (isLoading) return <Loader/>;
 
     if (!departments?.length) {
         return (

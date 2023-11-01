@@ -189,6 +189,9 @@
 
 .form fieldset {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     opacity: 0;
     margin: 0;
     padding: 0;
@@ -260,8 +263,8 @@
 }
 
 .btnLogin {
-    color: #19202F;
-    background: #9DEFDE;
+    /*color: #19202F;*/
+    /*background: #9DEFDE;*/
     transform: translateX(-30%);
 }
 

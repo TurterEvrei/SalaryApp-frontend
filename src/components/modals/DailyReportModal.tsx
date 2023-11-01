@@ -22,7 +22,7 @@ import {
     Td,
     Th,
     Thead,
-    Tr,
+    Tr, useToast,
     VStack
 } from "@chakra-ui/react";
 import FloatingInput from "../UI/inputs/FloatingInput";
@@ -30,6 +30,7 @@ import {IDailyReport} from "../../models/dto/IDailyReport";
 import {AddIcon, MinusIcon} from "@chakra-ui/icons";
 import {IPayment} from "../../models/dto/IPayment";
 import DailyReportService from "../../services/DailyReportService";
+import {errorSaveToast, successSaveToast} from "../toast/Toasts";
 
 const DailyReportModal = (
     {
@@ -62,6 +63,8 @@ const DailyReportModal = (
 
     const [currentDailyReport, setCurrentDailyReport] = useState<IDailyReport>(defaultDailyReport)
     const [paymentToAdd, setPaymentToAdd] = useState<IPayment>({} as IPayment)
+
+    const toast = useToast()
 
     useEffect(() => {
         setCurrentDailyReport(dailyReport !== undefined
@@ -141,11 +144,14 @@ const DailyReportModal = (
 
             if (result) {
                 onModalClose()
+                successSaveToast(toast)
             } else {
                 console.log('Error while saving DailyReport')
+                errorSaveToast(toast)
             }
         } catch (e) {
             console.log(e)
+            errorSaveToast(toast)
         }
     }
 

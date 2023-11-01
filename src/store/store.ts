@@ -3,11 +3,11 @@ import {IUserCred} from "../models/user/IUserCred";
 import AuthService from "../services/AuthService";
 import {IDecodedJwt} from "../models/jwt/IDecodedJwt";
 import jwtDecode from "jwt-decode";
-import $api from "../http";
 import {IUser} from "../models/user/IUser";
 import {IDepartment} from "../models/dto/IDepartment";
 import {IEmployee} from "../models/dto/IEmployee";
 import UserService from "../services/UserService";
+import {Role} from "../models/user/Role";
 
 export default class Store {
 
@@ -45,6 +45,14 @@ export default class Store {
 
     setLoading(value: boolean) {
         this.isLoading = value;
+    }
+
+    isAdmin(): boolean {
+        return this.userCred.roles.includes(Role.ADMIN);
+    }
+
+    isMaster(): boolean {
+        return this.userCred.roles.some(r => r === Role.ADMIN || r === Role.MANAGER || r === Role.MASTER);
     }
 
     async login(email: string, password: string) {
@@ -180,6 +188,7 @@ export default class Store {
             id: decodedToken.id,
             email: decodedToken.sub,
             roles: decodedToken.roles,
+            empId: decodedToken.empId,
         }
     }
 }

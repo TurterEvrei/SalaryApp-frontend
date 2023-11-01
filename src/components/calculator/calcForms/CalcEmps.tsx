@@ -29,35 +29,6 @@ const CalcEmps = (
             })
     }, [department])
 
-    // const empList = getEmployeesFromApi().;
-
-    // const empList: IEmployee[] = [
-    //     {id: 1,
-    //         name: 'Lupa',
-    //         active: true,
-    //         user: 1,
-    //         departments: [1]
-    //     },
-    //     {id: 2,
-    //         name: 'Pupa',
-    //         active: true,
-    //         user: 2,
-    //         departments: [1]
-    //     },
-    //     {id: 3,
-    //         name: 'LelikTrebuha',
-    //         active: true,
-    //         user: null,
-    //         departments: [2]
-    //     },
-    //     {id: 4,
-    //         name: 'Bolik',
-    //         active: false,
-    //         user: 4,
-    //         departments: [1]
-    //     },
-    // ]
-
     function checkEmpHandler(e: React.ChangeEvent<HTMLInputElement>,
                              emp: IEmployee) {
         e.target.checked ?
