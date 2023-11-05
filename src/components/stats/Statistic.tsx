@@ -3,7 +3,7 @@ import TableWrapperCard from "../cards/TableWrapperCard";
 import {
     Box,
     Button,
-    Center,
+    Center, Flex,
     HStack,
     Input,
     InputGroup,
@@ -126,8 +126,8 @@ const Statistic = () => {
     return (
         <TableWrapperCard title={'Статистика'}>
             <VStack>
-                <HStack gridArea={"selection"}
-                        spacing={3}
+                <Flex gap={3}
+                      flexWrap={'wrap'}
                 >
                     <Menu>
                         <MenuButton as={Button}
@@ -183,9 +183,9 @@ const Statistic = () => {
                             )}
                         </MenuList>
                     </Menu>
-                </HStack>
-                <HStack gridArea={"filters"}
-                        spacing={3}
+                </Flex>
+                <Flex gap={3}
+                      flexWrap={'wrap'}
                 >
 
                     <InputGroup w={'auto'}>
@@ -207,7 +207,7 @@ const Statistic = () => {
                     <Center fontSize={'lg'} color={'whiteAlpha.800'}>
                         Итого: {data.total}
                     </Center>
-                </HStack>
+                </Flex>
                 <Box h={'500px'} w={'100%'}>
                     <BarChart data={data.chartData}
                               keys={data.keys}

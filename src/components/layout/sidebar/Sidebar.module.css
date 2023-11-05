@@ -26,16 +26,19 @@
     /*position: absolute;*/
     z-index: 1;
     width: 75px;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     /*background: #ffffff;*/
     background: var(--sb);
     transition: 0.5s;
     padding-left: 5px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.sidebar.active,
-.sidebar:hover {
+.sidebar.active
+/*.sidebar:hover */
+{
     width: 270px;
     box-shadow:0 0 0 10000px rgba(0,0,0,.40);
 }
@@ -46,6 +49,11 @@
     position: relative;
     height: 100vh;
 }
+
+/*.sidebar .MenuList {*/
+/*    height: calc(100% - 100px);*/
+/*    overflow-y: auto;*/
+/*}*/
 
 .sidebar ul li {
     position: relative;
@@ -60,8 +68,9 @@
     transition: 0.5s;
 }
 
-.sidebar.active ul li.active,
-.sidebar:hover ul li.active {
+.sidebar.active ul li.active
+/*.sidebar:hover ul li.active */
+{
     /*background: var(--main-dark-shadowed);*/
     background: var(--main-dark);
     /*transition: box-shadow 0.5s;*/
@@ -95,7 +104,7 @@
     background: transparent;
     transition: box-shadow 0.5s;
 }
-.sidebar:hover ul li.active:before,
+/*.sidebar:hover ul li.active:before,*/
 .sidebar.active ul li.active:before {
     box-shadow: 0 0 0 0 transparent;
     transition: box-shadow 0.5s;
@@ -103,7 +112,7 @@
     /*background-color: white;*/
 }
 
-.sidebar:hover ul li.active:after,
+/*.sidebar:hover ul li.active:after,*/
 .sidebar.active ul li.active:after{
     /*box-shadow: 5px -5px 0 5px var(--main-dark-shadowed);*/
     box-shadow: 0 0 0 0 transparent;
@@ -251,6 +260,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /*border: 2px solid var(--dark-400);*/
+    box-shadow: var(--main-dark) 0 0 1px 1px;
 }
 
 .menuToggle::before {

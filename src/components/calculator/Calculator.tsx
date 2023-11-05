@@ -1,11 +1,9 @@
-import React, {SetStateAction, useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './Calculator.module.css'
-import CheckboxToggle from "../UI/checkbox/CheckboxToggle";
 import CalcFormSimple from "./calcForms/CalcFormSimple";
 import {IPeriodData} from "../../models/calculator/IPeriodData";
 import CalcEmps from "./calcForms/CalcEmps";
 import CalcFormLast from "./calcForms/CalcFormLast";
-import {CSSTransition, SwitchTransition} from "react-transition-group";
 import ChangePeriodTransition from "./transitions/ChangePeriodTransition";
 import {IInfoElement} from "./calcForms/FormUtils";
 import {IDailyReport} from "../../models/dto/IDailyReport";
@@ -14,7 +12,6 @@ import FinalResult from "./finalResult/FinalResult";
 import SwitchForms from "./transitions/SwitchForms";
 import {IDepartment} from "../../models/dto/IDepartment";
 import NoDepartment from "./exeptions/NoDepartment";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import SwitchDepartment from "./calcForms/SwitchDepartment";
 import UserService from "../../services/UserService";
@@ -197,9 +194,9 @@ const Calculator = () => {
 
     return (
         <div className={cl.container}>
-            <div className={cl.pageHeader}>
-                <span className={cl.pageDescription}>Расчет зарплаты сотрудников</span>
-                <span className={cl.pageName}>Калькулятор</span>
+            <div>
+                {/*<span className={cl.pageDescription}>Расчет зарплаты сотрудников</span>*/}
+                {/*<span className={cl.pageName}>Калькулятор</span>*/}
             </div>
             <SwitchForms isChangeEffect={isShowFinalResult}>
             {isShowFinalResult

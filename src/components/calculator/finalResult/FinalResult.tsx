@@ -63,13 +63,14 @@ const FinalResult = (
                 <div className={cl.resultHeader}>
                     Итоги
                 </div>
+                <div className={cl.tableWrapper}>
                 <table className={cl.resultTable}>
                     <thead>
                         <tr>
-                            <th>Официант</th>
-                            <th>Процент</th>
-                            <th>Чаевые</th>
-                            <th>Общее</th>
+                            <th>Офик</th>
+                            <th>%</th>
+                            <th>Чай</th>
+                            <th>Общ.</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +90,7 @@ const FinalResult = (
                     </tr>
                     </tbody>
                 </table>
+                </div>
                 <FloatingInput label='Дата'
                                type='date'
                                onChange={e => setDailyReport({

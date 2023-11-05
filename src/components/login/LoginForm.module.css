@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .sectionTitle {
@@ -52,7 +53,7 @@
     padding: 0;
     text-transform: uppercase;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: .5px;
     color: #999;
     background-color: transparent;
@@ -197,6 +198,7 @@
     padding: 0;
     border: 0;
     transition: all .3s ease-out;
+    max-width: 60vw;
 }
 
 .formLogin fieldset {

@@ -59,7 +59,7 @@ const Sidebar = (
                         <div className={cl.text}>HuiMonet</div>
                     </a>
                 </li>
-                <div className="MenuList">
+                <div className={cl.menuList}>
                     {navLinkMenuList.map((navLink, index) =>
                         <SidebarLink to={navLink.path}
                                      name={navLink.name}

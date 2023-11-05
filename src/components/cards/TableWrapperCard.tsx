@@ -13,7 +13,7 @@ const TableWrapperCard = (
     return (
         <Card mt={8}>
             <CardHeader bg='primary.100'
-                        mx={14}
+                        mx={20}
                         position="relative"
                         top={-8}
                         pt={3}

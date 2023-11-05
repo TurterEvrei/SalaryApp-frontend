@@ -36,8 +36,14 @@
     font-size: 18px;
 }
 
-.result .resultTable {
+.result .tableWrapper {
     grid-area: 2 / 2 / 3 / 8;
+    overflow-x: auto;
+    width: 100%;
+
+}
+
+.result .tableWrapper .resultTable {
     /*grid-template-columns: repeat(4, 1fr);*/
     border-collapse: collapse;
 
@@ -45,19 +51,19 @@
 
 }
 
-.result .resultTable thead tr {
+.result .tableWrapper .resultTable thead tr {
     text-align: start;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-weight: bold;
 }
 
-.result .resultTable th,
-.result .resultTable td {
+.result .tableWrapper .resultTable th,
+.result .tableWrapper .resultTable td {
     padding: 12px 5px;
 }
 
-.result .resultTable tbody tr {
+.result .tableWrapper .resultTable tbody tr {
     border-top: 1px solid var(--dark-300);
 }
 

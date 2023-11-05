@@ -1,7 +1,8 @@
 import axios from "axios";
 import AuthService from "../services/AuthService";
 
-export const API_URL = 'http://localhost:8080/api/v1'
+export const API_URL = 'http://176.57.217.233:8080/api/v1'
+// export const API_URL = 'http://localhost:8080/api/v1'
 
 const $api = axios.create({
     withCredentials: true,

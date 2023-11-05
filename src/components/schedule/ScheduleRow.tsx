@@ -1,5 +1,5 @@
 import React, {SetStateAction} from 'react';
-import {Center, Grid} from "@chakra-ui/react";
+import {Center, Tr} from "@chakra-ui/react";
 import {DayData, ScheduleData, ScheduleRowData} from "../../models/schedule/ScheduleData";
 import ScheduleCell from "./ScheduleCell";
 import ScheduleDay from "./ScheduleDay";
@@ -34,8 +34,9 @@ const ScheduleRow = (
 ) => {
 
     return (
-        <Grid gridTemplateColumns={'80px repeat(7, 1fr)'}
-              w={'100%'}
+        <Tr
+            // gridTemplateColumns={'80px repeat(7, 1fr)'}
+            //   w={'100%'}
         >
             <ScheduleCell>
                 <Center h={'100%'}>
@@ -62,7 +63,7 @@ const ScheduleRow = (
                 </ScheduleCell>
             )}
 
-        </Grid>
+        </Tr>
     );
 };
 

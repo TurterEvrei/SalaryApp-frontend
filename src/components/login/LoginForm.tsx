@@ -158,7 +158,7 @@ const LoginForm = () => {
                                               onChange={e => setAcceptRools(e.target.checked)}
                                               isChecked={acceptRools}
                                     >
-                                        <Box w={'250px'} color={'whiteAlpha.800'}>
+                                        <Box maxW={'250px'} color={'whiteAlpha.800'}>
                                             Отказываюсь от любых претензий к создателям и владельцам данного ресурса
                                         </Box>
                                     </Checkbox>

@@ -1,6 +1,7 @@
 import {ResponsiveBar} from "@nivo/bar";
 import theme from "../../theme/theme";
 import {Box, Center} from "@chakra-ui/react";
+import {useEffect, useRef, useState} from "react";
 
 const BarChart = (
         {
@@ -14,6 +15,12 @@ const BarChart = (
         }
     ) => {
     const colors = theme.colors
+
+    const [windowWidth, setWindowWidth] = useState<number>(useRef(window.innerWidth).current)
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth)
+    }, [window.innerWidth])
 
     return (
         <ResponsiveBar
@@ -50,7 +57,12 @@ const BarChart = (
             }}
             keys={keys}
             indexBy="date"
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            margin={{
+                top: 50,
+                right:  windowWidth > 500 ? 130 : 0,
+                bottom:  50,
+                // bottom: windowWidth > 500 ? 50 : 150,
+                left:  windowWidth > 500 ? 60 : 40}}
             padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
@@ -108,17 +120,19 @@ const BarChart = (
             legends={[
                 {
                     dataFrom: "keys",
-                    anchor: "bottom-right",
-                    direction: "column",
+                    anchor:  windowWidth > 500 ? "bottom-right" : "bottom",
+                    // direction: "row",
+                    direction: windowWidth > 500 ? "column" : "row",
                     justify: false,
-                    translateX: 120,
-                    translateY: 0,
-                    itemsSpacing: 2,
-                    itemWidth: 100,
+                    translateX:  windowWidth > 500 ? 90 : 0,
+                    translateY: windowWidth > 500 ? 0 : 50,
+                    // translateY: windowWidth > 500 ? 50 : 150,
+                    itemsSpacing: 0,
+                    itemWidth: 50,
                     itemHeight: 20,
                     itemDirection: "left-to-right",
                     itemOpacity: 0.85,
-                    symbolSize: 20,
+                    symbolSize: windowWidth > 500 ? 20 : 4,
                     effects: [
                         {
                             on: "hover",

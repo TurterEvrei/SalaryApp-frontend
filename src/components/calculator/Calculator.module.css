@@ -3,8 +3,9 @@
 .container {
     background: transparent;
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: 90px 1fr 50px;
+    padding-top: 40px;
+    /*display: grid;*/
+    /*grid-template-rows: 90px 1fr 50px;*/
     align-items: center;
     transition: 0.5s ease-in-out;
 }

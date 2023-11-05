@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box} from "@chakra-ui/react";
+import {Td} from "@chakra-ui/react";
 
 const ScheduleCell = (
     {
@@ -9,13 +9,15 @@ const ScheduleCell = (
     }
 ) => {
     return (
-        <Box border={'1px'}
+        <Td border={'1px'}
              borderColor={'dark.400'}
              textAlign={'center'}
              justifyItems={'center'}
+            py={0}
+            px={0}
         >
             {children}
-        </Box>
+        </Td>
     );
 };
 

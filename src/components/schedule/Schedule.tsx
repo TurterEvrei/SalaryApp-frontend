@@ -5,6 +5,7 @@ import {
     Button,
     ButtonGroup,
     Center,
+    Flex,
     Grid,
     HStack,
     Input,
@@ -14,8 +15,9 @@ import {
     MenuButton,
     MenuItem,
     MenuList,
-    useDisclosure,
-    VStack
+    Table,
+    Tr,
+    useDisclosure
 } from "@chakra-ui/react";
 import {AddIcon, ChevronDownIcon, SearchIcon} from "@chakra-ui/icons";
 import {IDepartment} from "../../models/dto/IDepartment";
@@ -133,13 +135,15 @@ const Schedule = observer(() => {
             <>
                 <Grid gridTemplateAreas={'"selection actions" "pagination actions"'}
                       gridTemplateRows={'auto auto'}
-                      gridTemplateColumns={'1fr 150px'}
+                      gridTemplateColumns={'1fr 40px'}
                       gridGap={2}
                       position={'relative'}
                       top={-4}
                 >
-                    <HStack gridArea={"selection"}
-                            spacing={3}
+                    <Flex gridArea={"selection"}
+                          gap={3}
+                          flexWrap={'wrap'}
+                          alignItems={'center'}
                     >
                         <InputGroup w={'auto'}>
                             <InputLeftElement>
@@ -164,9 +168,11 @@ const Schedule = observer(() => {
                                 )}
                             </MenuList>
                         </Menu>
-                    </HStack>
-                    <HStack gridArea={"pagination"}
-                            spacing={3}
+                    </Flex>
+                    <Flex gridArea={"pagination"}
+                          gap={3}
+                          flexWrap={'wrap'}
+                          alignItems={'center'}
                     >
                         <Menu offset={[0, 0]}>
                             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -196,7 +202,7 @@ const Schedule = observer(() => {
                                 {">"}
                             </Button>
                         </ButtonGroup>
-                    </HStack>
+                    </Flex>
                     <HStack gridArea={"actions"} justifyContent={'flex-end'}>
                         <Button letterSpacing={1}
                                 size="sm"
@@ -212,13 +218,18 @@ const Schedule = observer(() => {
                 <SwitchForms isChangeEffect={isChangeEffect}
                              timeout={1000}
                 >
-                    <Box>
+                    <Box overflowX={'auto'}
+                         border={'1px'}
+                         borderColor={'dark.400'}
+                         borderRadius={2}
+                    >
                     {scheduleDataList.map((scheduleData, index) =>
-                        <VStack gap={0}
+                        <Table gap={0}
                                 key={index}
+                               overscroll={'auto'}
                         >
 
-                            <Grid gridTemplateColumns={'80px repeat(7, 1fr)'}
+                            <Tr gridTemplateColumns={'80px repeat(7, 1fr)'}
                                   w={'100%'}
                             >
                                 <ScheduleCell>-</ScheduleCell>
@@ -227,7 +238,7 @@ const Schedule = observer(() => {
                                         {`${day.day} ${day.date.substring(8, 10)}.${day.date.substring(5, 7)}`}
                                     </ScheduleCell>
                                 )}
-                            </Grid>
+                            </Tr>
 
                             {scheduleData.rowsData?.map(row =>
                                 <ScheduleRow row={row}
@@ -244,7 +255,7 @@ const Schedule = observer(() => {
                                 />
                             )}
 
-                        </VStack>
+                        </Table>
                     )}
                     </Box>
                 </SwitchForms>
