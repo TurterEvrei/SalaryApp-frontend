@@ -46,9 +46,8 @@
 .result .tableWrapper .resultTable {
     /*grid-template-columns: repeat(4, 1fr);*/
     border-collapse: collapse;
-
     color: var(--text);
-
+    width: 100%;
 }
 
 .result .tableWrapper .resultTable thead tr {

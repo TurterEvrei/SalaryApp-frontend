@@ -1,6 +1,6 @@
 import React, {SetStateAction} from 'react';
 import {
-    Button,
+    Button, Flex,
     Grid,
     HStack,
     Input,
@@ -9,14 +9,15 @@ import {
     Menu,
     MenuButton,
     MenuItem,
-    MenuList
+    MenuList, VStack
 } from "@chakra-ui/react";
-import {AddIcon, ChevronDownIcon} from "@chakra-ui/icons";
+import {AddIcon, ChevronDownIcon, DownloadIcon} from "@chakra-ui/icons";
 import ColumnVisiblityPopover from "../addons/ColumnVisiblityPopover";
 import {Table} from "@tanstack/react-table";
 import {IDailyReport} from "../../../models/dto/IDailyReport";
 import {IDepartment} from "../../../models/dto/IDepartment";
 import {DatePeriod} from "../../../models/payments/DatePeriod";
+import DailyReportService from "../../../services/DailyReportService";
 
 const OptionsReportsTable = (
     {
@@ -50,18 +51,49 @@ const OptionsReportsTable = (
     }
 ) => {
 
+    function downloadReportsTable() {
 
+        // @ts-ignore
+        const curPer = Object.keys(DatePeriod).find(o => DatePeriod[o] === period)
+        if (curPer && currentDepartment.id) {
+            try {
+                DailyReportService.exportReportsTable(
+                    currentDepartment.id,
+                    curPer,
+                    dateStart?.toISOString().substring(0, 10) || null,
+                    dateFinish?.toISOString().substring(0, 10) || null
+                ).then((response) => {
+                    // create file link in browser's memory
+                    const href = URL.createObjectURL(response.data);
+
+                    // create "a" HTML element with href to file & click
+                    const link = document.createElement('a');
+                    link.href = href;
+                    link.setAttribute('download', 'reports.xlsx'); //or any other extension
+                    document.body.appendChild(link);
+                    link.click();
+
+                    // clean up "a" element & remove ObjectURL
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(href);
+                });
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    }
 
     return (
         <Grid gridTemplateAreas={'"selection actions" "filters actions"'}
               gridTemplateRows={'auto auto'}
-              gridTemplateColumns={'1fr 100px'}
+              gridTemplateColumns={'1fr 45px'}
               gridGap={2}
               position={'relative'}
               top={-4}
         >
-            <HStack gridArea={"selection"}
-                    spacing={3}
+            <Flex gridArea={"selection"}
+                  gap={3}
+                  flexWrap={'wrap'}
             >
                 <Menu>
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -91,9 +123,10 @@ const OptionsReportsTable = (
                         )}
                     </MenuList>
                 </Menu>
-            </HStack>
-            <HStack gridArea={"filters"}
-                    spacing={3}
+            </Flex>
+            <Flex gridArea={"filters"}
+                  gap={3}
+                  flexWrap={'wrap'}
             >
 
                 <InputGroup w={'auto'}>
@@ -113,29 +146,23 @@ const OptionsReportsTable = (
                     />
                 </InputGroup>
                 <ColumnVisiblityPopover table={table}/>
-            </HStack>
-            <HStack gridArea={"actions"} justifyContent={'flex-end'}>
-                {/*<Button letterSpacing={1}*/}
-                {/*        size="sm"*/}
-                {/*        colorScheme="primary"*/}
-                {/*        justifySelf="self-end"*/}
-                {/*        // onClick={saveAllChanges}*/}
-                {/*        // isDisabled={!changingIds.length}*/}
-                {/*>*/}
-                {/*    <CheckIcon/>*/}
-                {/*</Button>*/}
+            </Flex>
+            <VStack gridArea={"actions"} justifyContent={'flex-end'}>
                 <Button letterSpacing={1}
                         size="sm"
                         colorScheme="primary"
                         justifySelf="flex-end"
-                        onClick={() => {
-                            // setCurrentGlobalDailyReport({} as IDailyReport)
-                            onOpen()
-                        }}
+                        onClick={onOpen}
                 >
                     <AddIcon/>
                 </Button>
-            </HStack>
+                <Button onClick={downloadReportsTable}
+                        size="sm"
+                        colorScheme="primary"
+                >
+                    <DownloadIcon/>
+                </Button>
+            </VStack>
         </Grid>
     );
 };

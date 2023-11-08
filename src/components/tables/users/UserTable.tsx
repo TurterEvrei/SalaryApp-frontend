@@ -1,20 +1,19 @@
-import React, {SetStateAction, useEffect, useState} from 'react';
+import React, {SetStateAction, useState} from 'react';
 import {IUser} from "../../../models/user/IUser";
 import {IEmployee} from "../../../models/dto/IEmployee";
 import {
     ColumnDef,
-    ColumnFilter, flexRender,
+    ColumnFilter,
     getCoreRowModel,
-    getFilteredRowModel, getPaginationRowModel, getSortedRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
     PaginationState,
     useReactTable,
     VisibilityState
 } from "@tanstack/react-table";
-import UserService from "../../../services/UserService";
-import EmployeeService from "../../../services/EmployeeService";
 import {Table as TanstackTable} from "@tanstack/table-core/build/lib/types";
-import {Button, ButtonGroup, Table, TableCaption, Tbody, Td, Text, Th, Thead, Tr} from "@chakra-ui/react";
-import {ArrowUpDownIcon, ChevronDownIcon, ChevronUpIcon} from "@chakra-ui/icons";
+import {Table} from "@chakra-ui/react";
 import TableWrapperCard from "../../cards/TableWrapperCard";
 import EditableCell from "../cells/EditableCell";
 import StatusCell from "../cells/StatusCell";

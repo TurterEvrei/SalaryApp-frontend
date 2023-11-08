@@ -92,6 +92,8 @@ const Sidebar = (
             </ul>
             
         </div>
+            <div className={cl.block}></div>
+
         </>
     );
 };

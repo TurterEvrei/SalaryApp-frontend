@@ -11,7 +11,7 @@ import {
     VisibilityState
 } from "@tanstack/react-table";
 import {IDailyReport} from "../../../models/dto/IDailyReport";
-import {Table, useDisclosure} from "@chakra-ui/react";
+import {Box, Table, useDisclosure} from "@chakra-ui/react";
 import TablePagination from "../addons/TablePagination";
 import TableHead from "../addons/TableHead";
 import TableBody from "../addons/TableBody";
@@ -81,6 +81,10 @@ const DailyReportsTable = () => {
 
     useEffect(() => {
         fetchUserDepartments().then(() => setLoading(false))
+        if (window.innerWidth < 500) setColumnVisibility({
+            id: false,
+            payments: false,
+        })
     }, [])
 
     useEffect(() => {
@@ -193,19 +197,21 @@ const DailyReportsTable = () => {
                                      dateFinish={dateFinish}
                                      setDateFinish={setDateFinish}
                 />
-                <Table variant="simple">
-                    <TablePagination table={table}
-                                     setPagination={setPagination}
-                    />
-                    <TableHead table={table}/>
-                    <TableBody table={table}
-                               extraCellProps={{
-                                   onOpen,
-                                   setDailyReports,
-                                   setCurrentGlobalDailyReport,
-                               }}
-                    />
-                </Table>
+                <Box overflowX={'auto'}>
+                    <Table variant="simple">
+                        <TablePagination table={table}
+                                         setPagination={setPagination}
+                        />
+                        <TableHead table={table}/>
+                        <TableBody table={table}
+                                   extraCellProps={{
+                                       onOpen,
+                                       setDailyReports,
+                                       setCurrentGlobalDailyReport,
+                                   }}
+                        />
+                    </Table>
+                </Box>
                 <DailyReportModal isOpen={isOpen}
                                   onClose={onClose}
                                   currentDepartment={currentDepartment}

@@ -16,6 +16,7 @@ import {observer} from "mobx-react-lite";
 import SwitchDepartment from "./calcForms/SwitchDepartment";
 import UserService from "../../services/UserService";
 import Loader from "../UI/loader/Loader";
+import {Center} from "@chakra-ui/react";
 
 const Calculator = () => {
     const [isShowSwitchingDepartments, setShowSwitchingDepartments] = useState<boolean>(true)
@@ -193,7 +194,8 @@ const Calculator = () => {
     }
 
     return (
-        <div className={cl.container}>
+        <Center className={cl.container}>
+
             <div>
                 {/*<span className={cl.pageDescription}>Расчет зарплаты сотрудников</span>*/}
                 {/*<span className={cl.pageName}>Калькулятор</span>*/}
@@ -292,7 +294,7 @@ const Calculator = () => {
                 </div>
             }
             </SwitchForms>
-        </div>
+        </Center>
     );
 };
 

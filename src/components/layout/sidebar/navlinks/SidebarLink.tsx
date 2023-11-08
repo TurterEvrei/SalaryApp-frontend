@@ -26,7 +26,7 @@ const SidebarLink = (
     return (
         <li className={match ? cl.active : ''}
             onClick={onClickFunc}
-            hidden={!store.userCred.roles.some(role => requiredRoles.includes(role))}
+            hidden={!store.userCred?.roles?.some(role => requiredRoles.includes(role))}
         >
             <Link to={to}>
                 <div className={cl.icon}>

@@ -218,44 +218,47 @@ const Schedule = observer(() => {
                 <SwitchForms isChangeEffect={isChangeEffect}
                              timeout={1000}
                 >
-                    <Box overflowX={'auto'}
-                         border={'1px'}
-                         borderColor={'dark.400'}
-                         borderRadius={2}
-                    >
+                    <Box>
                     {scheduleDataList.map((scheduleData, index) =>
-                        <Table gap={0}
-                                key={index}
-                               overscroll={'auto'}
+                        <Box overflowX={'auto'}
+                             border={'1px'}
+                             borderColor={'dark.400'}
+                             borderRadius={2}
+                             mt={1}
                         >
-
-                            <Tr gridTemplateColumns={'80px repeat(7, 1fr)'}
-                                  w={'100%'}
+                            <Table gap={0}
+                                    key={index}
+                                   // overscroll={'auto'}
                             >
-                                <ScheduleCell>-</ScheduleCell>
-                                {scheduleData?.weekDates?.map(day =>
-                                    <ScheduleCell key={day.date}>
-                                        {`${day.day} ${day.date.substring(8, 10)}.${day.date.substring(5, 7)}`}
-                                    </ScheduleCell>
+
+                                <Tr gridTemplateColumns={'80px repeat(7, 1fr)'}
+                                      w={'100%'}
+                                >
+                                    <ScheduleCell>-</ScheduleCell>
+                                    {scheduleData?.weekDates?.map(day =>
+                                        <ScheduleCell key={day.date}>
+                                            {`${day.day} ${day.date.substring(8, 10)}.${day.date.substring(5, 7)}`}
+                                        </ScheduleCell>
+                                    )}
+                                </Tr>
+
+                                {scheduleData.rowsData?.map(row =>
+                                    <ScheduleRow row={row}
+                                                 weekDates={scheduleData.weekDates}
+                                                 currentDepartment={currentDepartment}
+                                                 setScheduleDataList={setScheduleDataList}
+                                                 scheduleDataIndex={index}
+                                                 employees={employees}
+                                                 setTargetEmployee={setTargetEmployee}
+                                                 onOpen={onOpen}
+                                                 setTargetWish={setTargetWish}
+                                                 key={row.employeeId}
+                                                 setTargetDate={setTargetDate}
+                                    />
                                 )}
-                            </Tr>
 
-                            {scheduleData.rowsData?.map(row =>
-                                <ScheduleRow row={row}
-                                             weekDates={scheduleData.weekDates}
-                                             currentDepartment={currentDepartment}
-                                             setScheduleDataList={setScheduleDataList}
-                                             scheduleDataIndex={index}
-                                             employees={employees}
-                                             setTargetEmployee={setTargetEmployee}
-                                             onOpen={onOpen}
-                                             setTargetWish={setTargetWish}
-                                             key={row.employeeId}
-                                             setTargetDate={setTargetDate}
-                                />
-                            )}
-
-                        </Table>
+                            </Table>
+                        </Box>
                     )}
                     </Box>
                 </SwitchForms>

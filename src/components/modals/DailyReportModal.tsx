@@ -192,35 +192,29 @@ const DailyReportModal = (
                         >
                             <Thead>
                                 <Tr>
-                                    <Th>Работник</Th>
-                                    <Th>Процент</Th>
-                                    <Th>Чай</Th>
-                                    <Th>Итог</Th>
-                                    <Th>*</Th>
+                                    <Th px={0}>Работник</Th>
+                                    <Th px={0}>Процент</Th>
+                                    <Th px={0}>Чай</Th>
+                                    <Th px={0}>Итог</Th>
+                                    <Th px={0}>*</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
                                 {currentDailyReport.payments.map(payment =>
-                                    // <Flex alignItems={'center'}
-                                    //       w={'100%'}
-                                    //       gap={1}
-                                    //       justifyContent={'space-between'}
-                                    //       key={payment.employeeId}
-                                    // >
                                 <Tr key={payment.employeeId}>
-                                    <Td>
+                                    <Td px={0}>
                                         {payment.employeeName}
                                     </Td>
-                                    <Td>
+                                    <Td px={0}>
                                         {payment.procentFromSales}
                                     </Td>
-                                    <Td>
+                                    <Td px={0}>
                                         {payment.tips}
                                     </Td>
-                                    <Td>
+                                    <Td px={0}>
                                         {payment.totalPayment}
                                     </Td>
-                                    <Td>
+                                    <Td px={0}>
                                         <Button size="xs"
                                                 colorScheme="primary"
                                                 justifySelf="flex-end"
